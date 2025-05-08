@@ -1,0 +1,93 @@
+2025-05-03 14:14:30,378 - INFO - Starting malware database update
+2025-05-03 14:14:30,857 - INFO - Updated malware DB with 0 hashes
+2025-05-08 10:32:28,788 - INFO - Starting malware database update
+2025-05-08 10:32:29,421 - INFO - Updated malware DB with 0 hashes
+2025-05-08 10:53:55,853 - INFO - Starting malware database update
+2025-05-08 10:53:56,452 - INFO - Updated malware DB with 0 hashes
+2025-05-08 10:58:53,103 - INFO - Starting malware database update
+2025-05-08 10:58:53,556 - ERROR - No hashes extracted from threat feed
+2025-05-08 11:11:47,022 - INFO - Starting malware database update
+2025-05-08 11:11:48,315 - ERROR - No URLs extracted and hashed from threat feed
+2025-05-08 11:25:42,638 - INFO - Starting malware database update
+2025-05-08 11:25:43,337 - INFO - Updated malware DB with 0 malicious URLs
+2025-05-08 11:27:16,111 - INFO - Starting malware database update
+2025-05-08 11:27:16,417 - INFO - Updated malware DB with 0 malicious URLs
+2025-05-08 11:28:07,021 - INFO - Starting malware database update
+2025-05-08 11:28:07,331 - INFO - Updated malware DB with 0 malicious URLs
+2025-05-08 11:38:11,505 - INFO - Starting malware database update
+2025-05-08 11:38:12,275 - INFO - Updated malware DB with 0 malicious URLs
+2025-05-08 11:43:32,825 - INFO - Starting malware database update
+2025-05-08 11:43:33,354 - INFO - Updated malware DB with 0 malicious URLs
+2025-05-08 11:46:48,080 - INFO - Starting malware database update
+2025-05-08 11:46:48,413 - WARNING - No valid URLs found in the feed.
+2025-05-08 11:50:18,167 - INFO - Starting malware database update
+2025-05-08 11:50:18,712 - WARNING - No URLs found in the threat feed
+2025-05-08 11:51:49,467 - INFO - Starting malware database update
+2025-05-08 11:51:49,872 - WARNING - No URLs found after parsing
+2025-05-08 11:54:19,362 - INFO - Starting malware database update
+2025-05-08 11:54:19,890 - INFO - Updated malware DB with 12318 URLs
+2025-05-08 12:00:37,933 - ERROR - YARA rules error: malware_rules.yar(8): syntax error, unexpected '{', expecting text string
+2025-05-08 12:00:37,945 - ERROR - Invalid directory: /home/kali/ex.exe
+2025-05-08 12:01:03,293 - ERROR - YARA rules error: malware_rules.yar(8): syntax error, unexpected '{', expecting text string
+2025-05-08 12:01:03,919 - WARNING - Malware detected: /home/kali/.mozilla/firefox/fo0lth24.default-esr/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.files/3 (Matched URL: http://jointings.org/eng/wp-content/plugins/featurific-for-wordpress/3)
+2025-05-08 12:01:03,920 - WARNING - Malware detected: /home/kali/.mozilla/firefox/fo0lth24.default-esr/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.files/4 (Matched URL: http://45.152.112.110/4)
+2025-05-08 12:01:03,922 - WARNING - Malware detected: /home/kali/.mozilla/firefox/fo0lth24.default-esr/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.files/1 (Matched URL: http://jointings.org/eng/wp-content/plugins/featurific-for-wordpress/1)
+2025-05-08 12:01:03,928 - WARNING - Malware detected: /home/kali/.mozilla/firefox/fo0lth24.default-esr/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.files/2 (Matched URL: http://itssprout.com/wp-includes/2)
+2025-05-08 12:01:03,930 - WARNING - Malware detected: /home/kali/.mozilla/firefox/fo0lth24.default-esr/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.files/5 (Matched URL: http://45.152.112.110/5)
+2025-05-08 12:01:04,194 - WARNING - Malware detected: /home/kali/BugOff/env/bin/python (Matched URL: http://209.141.49.113/tv/python)
+2025-05-08 12:01:04,217 - WARNING - Malware detected: /home/kali/BugOff/env/bin/python3 (Matched URL: http://209.141.49.113/sd/python3)
+2025-05-08 12:01:04,441 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/joblib-1.5.0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:04,478 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/scikit_learn-1.6.1.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:04,514 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/charset_normalizer-3.4.2.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:08,082 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/pip-25.0.1.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:11,973 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/pandas-2.2.3.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:12,019 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/scipy-1.15.2.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:12,051 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/threadpoolctl-3.6.0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:12,072 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/python_dateutil-2.9.0.post0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:12,117 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/certifi-2025.4.26.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,700 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/urllib3-2.4.0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,731 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/scapy-2.6.1.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,774 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/yara-1.7.7.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,826 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/pytz-2025.2.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,887 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/psutil-7.0.0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:24,921 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/tzdata-2025.2.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:31,440 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/numpy-2.2.5.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:31,557 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/six-1.17.0.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:39,838 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/requests-2.32.3.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:01:47,623 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/pyinotify-0.9.6.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:02:03,527 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/idna-3.10.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:02:05,024 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/tqdm-4.67.1.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:02:05,069 - WARNING - Malware detected: /home/kali/BugOff/env/lib/python3.13/site-packages/yara_python-4.5.2.dist-info/RECORD (Matched URL: http://e4l4.com/unicorn-2.0.0rc7.dist-info/RECORD)
+2025-05-08 12:02:53,328 - ERROR - YARA rules error: malware_rules.yar(8): syntax error, unexpected '{', expecting text string
+2025-05-08 12:02:53,408 - INFO - Directory scan completed on /home/kali/Downloads: 1 files, 0 threats
+2025-05-08 12:08:22,795 - ERROR - YARA rules error: malware_rules.yar(1): syntax error, unexpected identifier
+2025-05-08 12:08:22,809 - INFO - Directory scan completed on /home/kali/Downloads: 1 files, 0 threats
+2025-05-08 12:09:00,900 - INFO - Directory scan completed on /home/kali/Downloads: 1 files, 0 threats
+2025-05-08 12:10:11,472 - WARNING - YARA match: /home/kali/Downloads/ex.exe (Rule: [detect_malware])
+2025-05-08 12:10:11,473 - INFO - Directory scan completed on /home/kali/Downloads: 1 files, 1 threats
+2025-05-08 12:21:28,609 - CRITICAL - Fatal error: 'pmmap_grouped' object has no attribute 'addr'
+2025-05-08 12:25:16,549 - CRITICAL - Fatal error: [Errno 5] Input/output error
+2025-05-08 12:50:41,983 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_125041.json
+2025-05-08 13:07:02,118 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_130702.json
+2025-05-08 13:29:52,267 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_132952.json
+2025-05-08 14:00:29,886 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140029.json
+2025-05-08 14:00:57,711 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140057.json
+2025-05-08 14:01:05,762 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140105.json
+2025-05-08 14:02:06,759 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140206.json
+2025-05-08 14:02:12,288 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140212.json
+2025-05-08 14:02:16,929 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140216.json
+2025-05-08 14:02:21,807 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140221.json
+2025-05-08 14:02:26,601 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140226.json
+2025-05-08 14:02:31,137 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140231.json
+2025-05-08 14:02:35,393 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_140235.json
+2025-05-08 14:05:44,195 - INFO - Saved sandbox report: /sandbox/reports/report_test.exe_20250508_140544.json
+2025-05-08 14:05:52,055 - INFO - Saved sandbox report: /sandbox/reports/report_test.exe_20250508_140552.json
+2025-05-08 14:15:28,804 - CRITICAL - Fatal error: 'MLClassifier' object has no attribute 'model_status'
+2025-05-08 14:53:27,899 - INFO - Starting malware database update
+2025-05-08 14:53:37,918 - ERROR - Error updating malware DB: HTTPSConnectionPool(host='urlhaus.abuse.ch', port=443): Max retries exceeded with url: /downloads/csv_online/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f80511ed400>: Failed to resolve 'urlhaus.abuse.ch' ([Errno -3] Temporary failure in name resolution)"))
+2025-05-08 14:53:59,379 - ERROR - Invalid directory: /home/user/downloads
+2025-05-08 14:54:18,365 - ERROR - Invalid directory: /home/user/Downloads/
+2025-05-08 14:54:29,264 - WARNING - Malware detected: /home/kali/Downloads/test.exe (Matched URL: http://moonloaderupdate.ru/test.exe)
+2025-05-08 14:54:29,276 - WARNING - YARA match: /home/kali/Downloads/ex.exe (Rule: [detect_malware])
+2025-05-08 14:54:29,277 - INFO - Directory scan completed on /home/kali/Downloads/: 2 files, 2 threats
+2025-05-08 14:55:38,946 - INFO - Saved sandbox report: /sandbox/reports/report_ex.exe_20250508_145538.json
