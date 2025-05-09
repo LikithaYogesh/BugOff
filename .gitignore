@@ -1,0 +1,19 @@
+# Ignore sandbox reports
+sandbox/
+nullversions/
+
+# Ignore temporary files
+*.tmp
+*.log
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore environment folders
+env/
+venv/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
