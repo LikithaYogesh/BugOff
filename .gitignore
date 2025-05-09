@@ -1,6 +1,7 @@
-# Ignore sandbox reports
 sandbox/
 nullversions/
+# Ignore sandbox reports
+reports/
 
 # Ignore temporary files
 *.tmp
