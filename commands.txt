@@ -1,0 +1,14 @@
+source env/bin/activate
+sudo python3 main.py --scan /home/kali/Downloads
+sudo python3 main.py --update
+
+sudo python3 main.py --memory-scan
+sudo python3 main.py --sandbox /home/kali/shell.elf
+
+sudo python3 train_model.py
+sudo python3 main.py --ml-scan /opt/malware/sample.bin
+
+sudo python3 main.py --monitor /var/www/html
+
+sudo python3 main.py --full-scan
+sudo python3 main.py --anomaly-scan
