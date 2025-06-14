@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import sys
 import io
 import csv
 import re
@@ -25,6 +26,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from memory_scanner import MemoryScanner
+from sand import sandbox_analyze
 
 # ===== CONFIGURATION =====
 MALWARE_DB_FILE = "malware_db.txt"
@@ -579,205 +581,6 @@ def start_monitoring(path_to_watch):
         logger.error(f"Monitoring error: {str(e)}")
         print(f"[!] Monitoring error: {str(e)}")
 
-class SandboxAnalyzer:
-    def __init__(self, timeout=60):
-        self.timeout = timeout
-        self.report_dir = SANDBOX_REPORT_DIR
-        os.makedirs(self.report_dir, exist_ok=True)
-        
-    def analyze(self, file_path):
-        """Analyze a file in sandbox environment"""
-        if not os.path.isfile(file_path):
-            return None
-            
-        report = {
-            'file': file_path,
-            'timestamp': datetime.now().isoformat(),
-            'malicious': False,
-            'suspicious_activities': [],
-            'processes_created': [],
-            'files_created': [],
-            'network_connections': []
-        }
-        
-        # Create temporary directory for sandbox
-        with tempfile.TemporaryDirectory() as temp_dir:
-            try:
-                # Copy file to sandbox
-                sandbox_path = os.path.join(temp_dir, os.path.basename(file_path))
-                with open(file_path, 'rb') as src, open(sandbox_path, 'wb') as dst:
-                    dst.write(src.read())
-                
-                # Make executable if not already
-                os.chmod(sandbox_path, 0o755)
-                
-                # Start monitoring processes
-                initial_processes = set(p.pid for p in psutil.process_iter())
-                
-                # Execute in sandbox
-                start_time = time.time()
-                proc = subprocess.Popen(
-                    sandbox_path,
-                    cwd=temp_dir,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    shell=True
-                )
-                
-                try:
-                    # Monitor while process runs
-                    while proc.poll() is None and (time.time() - start_time) < self.timeout:
-                        self._monitor_activities(proc.pid, report, temp_dir)
-                        time.sleep(1)
-                    
-                    # Process finished or timeout
-                    if proc.poll() is None:
-                        proc.terminate()
-                        report['timeout'] = True
-                        report['suspicious_activities'].append("Process timeout - possible hang")
-                    else:
-                        report['exit_code'] = proc.returncode
-                        
-                    # Check for new processes
-                    self._check_processes(initial_processes, report)
-                    
-                    # Final monitoring
-                    self._monitor_activities(proc.pid, report, temp_dir)
-                    
-                except Exception as e:
-                    report['error'] = str(e)
-                    logger.error(f"Sandbox error monitoring {file_path}: {str(e)}")
-                
-                # Check results for malicious indicators
-                self._evaluate_behavior(report)
-                
-            except Exception as e:
-                report['error'] = str(e)
-                logger.error(f"Sandbox error analyzing {file_path}: {str(e)}")
-                
-        # Save report
-        self._save_report(report)
-        return report
-        
-    def _monitor_activities(self, pid, report, temp_dir):
-        """Monitor activities of the process"""
-        try:
-            process = psutil.Process(pid)
-            
-            # Check network connections
-            for conn in process.connections():
-                if conn.status == 'ESTABLISHED' and conn.raddr:
-                    network_info = {
-                        'local': f"{conn.laddr.ip}:{conn.laddr.port}",
-                        'remote': f"{conn.raddr.ip}:{conn.raddr.port}",
-                        'status': conn.status
-                    }
-                    if network_info not in report['network_connections']:
-                        report['network_connections'].append(network_info)
-                        if conn.raddr.ip not in ['127.0.0.1']:
-                            report['suspicious_activities'].append(
-                                f"Established connection to {conn.raddr.ip}:{conn.raddr.port}"
-                            )
-            
-            # Check file operations
-            open_files = process.open_files()
-            for f in open_files:
-                if not f.path.startswith(temp_dir) and f.path not in report['files_created']:
-                    report['files_created'].append(f.path)
-                    report['suspicious_activities'].append(f"Accessed file: {f.path}")
-                    
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            pass
-            
-    def _check_processes(self, initial_processes, report):
-        """Check for newly created processes"""
-        current_processes = set(p.pid for p in psutil.process_iter())
-        new_processes = current_processes - initial_processes
-        
-        for pid in new_processes:
-            try:
-                p = psutil.Process(pid)
-                info = {
-                    'pid': pid,
-                    'name': p.name(),
-                    'cmdline': p.cmdline(),
-                    'create_time': p.create_time()
-                }
-                report['processes_created'].append(info)
-                report['suspicious_activities'].append(f"Spawned new process: {p.name()} (PID: {pid})")
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-                
-    def _evaluate_behavior(self, report):
-        """Evaluate behavior for malicious indicators"""
-        malicious_indicators = [
-            'Created hidden file',
-            'Modified system directory',
-            'Accessed sensitive path',
-            'Established connection to',
-            'Spawned new process',
-            'Process timeout'
-        ]
-        
-        suspicious_count = 0
-        for activity in report['suspicious_activities']:
-            if any(indicator in activity for indicator in malicious_indicators):
-                suspicious_count += 1
-                
-        if suspicious_count >= 2:  # At least 2 suspicious activities
-            report['malicious'] = True
-        elif 'network_connections' in report and len(report['network_connections']) > 3:
-            report['malicious'] = True
-        elif 'processes_created' in report and len(report['processes_created']) > 2:
-            report['malicious'] = True
-            
-    def _save_report(self, report):
-        """Save analysis report to file"""
-        try:
-            filename = f"report_{os.path.basename(report['file'])}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-            report_path = os.path.join(self.report_dir, filename)
-            
-            with open(report_path, 'w') as f:
-                json.dump(report, f, indent=2)
-                
-            logger.info(f"Saved sandbox report: {report_path}")
-        except Exception as e:
-            logger.error(f"Error saving sandbox report: {str(e)}")
-
-def sandbox_analyze(file_path):
-    """Analyze a specific file in the sandbox"""
-    if not os.path.isfile(file_path):
-        print(f"[-] Error: {file_path} is not a valid file")
-        return
-        
-    print(f"[*] Starting sandbox analysis of: {file_path}")
-    print(f"    - Timeout: {SANDBOX_TIMEOUT} seconds")
-    print("    - Monitoring for:")
-    print("        * Process creation")
-    print("        * File system changes")
-    print("        * Network activity")
-    
-    sandbox = SandboxAnalyzer(timeout=SANDBOX_TIMEOUT)
-    report = sandbox.analyze(file_path)
-    
-    if report:
-        print("\n[+] Sandbox analysis completed")
-        print(f"    - File: {report['file']}")
-        print(f"    - Timestamp: {report['timestamp']}")
-        print(f"    - Malicious: {'Yes' if report['malicious'] else 'No'}")
-        
-        if report['malicious']:
-            print("\n[!] MALICIOUS BEHAVIOR DETECTED!")
-            print("    Suspicious activities:")
-            for activity in report['suspicious_activities']:
-                print(f"    - {activity}")
-                
-        if report.get('error'):
-            print(f"\n[!] Errors occurred during analysis: {report['error']}")
-            
-        print(f"\nReport saved to: {os.path.join(SANDBOX_REPORT_DIR, os.path.basename(report['file']))}_*.json")
-    else:
-        print("[-] Sandbox analysis failed")
 
 # ===== MAIN FUNCTION =====
 def main():
@@ -874,7 +677,15 @@ def main():
                     print("[-] ML models not available. Please train models first.")
         
         elif args.sandbox:
-            sandbox_analyze(args.sandbox)
+            # Call the sandbox analysis with the same simple interface
+            if len(sys.argv) > 2:  # Ensure we have the file argument
+                sandbox_analyze(args.sandbox)
+            else:
+                print("Usage: python your_script.py --sandbox <file_to_analyze>")
+                print("\nRequirements:")
+                print("1. Docker installed and running")
+                print("2. Pre-built sandbox image with monitoring tools")
+                print("3. Appropriate permissions to run containers")
 
         elif args.memory_scan:
             print("[*] Starting memory scan...")
