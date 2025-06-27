@@ -1,6 +1,7 @@
-# 🛡️ BugOff: Intelligent Anti-Malware and Anomaly Detection System
+# 🛡️ Intelligent Malware Detection System
 
-BugOff is a lightweight, extensible, and intelligent anti-malware framework designed for cybersecurity analysts, system administrators, and enthusiasts. It leverages signature-based detection, machine learning, sandbox analysis, memory scanning, and real-time monitoring to offer comprehensive system protection.
+
+This repository provides a powerful, machine learning-augmented, sandbox-enabled, and memory-scanning anti-virus CLI tool. It integrates real-time monitoring, anomaly detection, ML-based threat classification, YARA rule-based scanning, and memory forensics to deliver a comprehensive malware detection and analysis solution.
 
 ## Features
 **1. Real-Time File Monitoring:**
@@ -17,7 +18,7 @@ Model can be updated and retrained separately to improve detection capabilities.
 
 **3. Sandbox Analysis:**
 
-Isolate and analyze suspicious binaries in a controlled Docker-based environment.
+Isolate and analyze suspicious files in a controlled Docker-based environment.
 
 Executes files in a controlled environment to observe suspicious behaviors.
 
@@ -84,6 +85,8 @@ All critical events are logged (file detections, sandbox reports, memory scan re
 
    ```bash
     sudo apt install yara
+
+5. Doker: ensure that doker is installed in your system.
 
 ## Setup
 Clone this repository:
