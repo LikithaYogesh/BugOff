@@ -1,6 +1,6 @@
-# Custom Anti-Virus System
+# 🛡️ BugOff: Intelligent Anti-Malware and Anomaly Detection System
 
-This repository provides a powerful, machine learning-augmented, memory-scanning, and sandbox-enabled Anti-Virus CLI tool. It integrates real-time monitoring, anomaly detection, ML-based threat classification, YARA-based file scanning, and memory scanning to deliver a robust malware detection and analysis solution.
+BugOff is a lightweight, extensible, and intelligent anti-malware framework designed for cybersecurity analysts, system administrators, and enthusiasts. It leverages signature-based detection, machine learning, sandbox analysis, memory scanning, and real-time monitoring to offer comprehensive system protection.
 
 ## Features
 **1. Real-Time File Monitoring:**
