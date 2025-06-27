@@ -17,6 +17,8 @@ Model can be updated and retrained separately to improve detection capabilities.
 
 **3. Sandbox Analysis:**
 
+Isolate and analyze suspicious binaries in a controlled Docker-based environment.
+
 Executes files in a controlled environment to observe suspicious behaviors.
 
 Monitors process creation, file system changes, and network activity.
